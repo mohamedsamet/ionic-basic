@@ -13,7 +13,8 @@
 <ion-content padding>
     <p>Ici La liste des livres</p>
     <ion-list>
-        <button ion-item (click)="onLoadBook(i)" *ngFor="let book of bookList ; let i = index">        
+        <button ion-item (click)="onLoadBook(i)" *ngFor="let book of bookList ; let i = index"
+        [ngClass]="{'isLend':book.isLend, 'isNotLend':!book.isLend}">        
             {{book.name}}
         </button>
     </ion-list>  

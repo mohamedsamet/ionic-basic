@@ -12,8 +12,9 @@
 </ion-header>
 <ion-content padding>
     <p>Ici La liste des cd</p>
-    <ion-list [ngClass]="{'isLend':cd.isLend, 'isNotLend':!cd.isLend}">
-        <button ion-item (click)="onLoadCd(i)" *ngFor="let cd of cdList ; let i = index">        
+    <ion-list>
+        <button ion-item (click)="onLoadCd(i)" *ngFor="let cd of cdList ; let i = index"
+        [ngClass]="{'isLend':cd.isLend, 'isNotLend':!cd.isLend}">         
             {{cd.name}}
         </button>
     </ion-list>  

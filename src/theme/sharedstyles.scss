@@ -1,0 +1,24 @@
+ion-navbar .toolbar-title{
+    color :#007cbb ;
+}
+p{
+    color: white;
+}
+ion-content .scroll-content{
+    background-image: url('../assets/imgs/FMaterial.jpg');
+    background-size: 450px 800px;
+    opacity: .8;
+}
+
+ion-list{
+    .item{
+        background-color: rgba(57,110,145,.25);
+        color: white;   
+        &.isLend{
+            background-color: rgba(171,58,58,.75);
+        }
+
+    }
+
+} 
+

@@ -11,7 +11,7 @@ $font-path: "../assets/fonts";
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
 
-
+@import "sharedstyles.scss";
 @import "ionic.globals";
 
 
@@ -32,7 +32,7 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #3760a9,
+  primary:    #007cbb,
   secondary:  #1d7436,
   danger:     #a72020,
   light:      #f4f4f4,
