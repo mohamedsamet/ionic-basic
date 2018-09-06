@@ -6,13 +6,13 @@
         </button>
         </ion-buttons>
         <ion-title>
-            Cd list
+           Liste des Cd
         </ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
     <p>Ici La liste des cd</p>
-    <ion-list>
+    <ion-list [ngClass]="{'isLend':cd.isLend, 'isNotLend':!cd.isLend}">
         <button ion-item (click)="onLoadCd(i)" *ngFor="let cd of cdList ; let i = index">        
             {{cd.name}}
         </button>

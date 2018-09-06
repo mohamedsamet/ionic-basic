@@ -6,12 +6,12 @@
     </ion-header>
     <ion-content>
         <ion-list>
-            <button ion-item icon-start (click)="OnNavigate(TabsPage)">
-                <ion-icon name="folder"></ion-icon>
+            <button ion-item (click)="OnNavigate(tabsPage)">
+                <ion-icon name="folder" item-start></ion-icon>
                         Livres et CD
             </button>
-            <button ion-item icon-start (click)="OnNavigate(settingsPage)">
-                <ion-icon name="construct"></ion-icon>
+            <button ion-item  (click)="OnNavigate(settingsPage)">
+                <ion-icon name="settings" item-start></ion-icon>
                 Réglage
             </button>
         </ion-list>

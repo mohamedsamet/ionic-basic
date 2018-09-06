@@ -3,22 +3,22 @@
         <ion-buttons>
             <button ion-button  (click)="dismissModal()">Fermer</button>
         </ion-buttons>
-        <ion-title>{{book.name}}</ion-title>
+        <ion-title>Gestion des livres</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
     <ion-card>
         <ion-card-header>
-            {{book.name}}        
+           Livre : {{book.name}}        
         </ion-card-header>
     </ion-card>
     <ion-grid>
         <ion-row>
             <ion-col>
-                <button ion-button full color="primary" (click)="onLendGetBook()" [disabled]="!book.isLend">Preter</button>
+                <button ion-button full color="primary" (click)="onLendGetBook()" [disabled]="book.isLend">Preter</button>
             </ion-col>
               <ion-col>
-                  <button ion-button full color="secondary" (click)="onLendGetBook()" [disabled]="book.isLend">Rendre</button>
+                  <button ion-button full color="secondary" (click)="onLendGetBook()" [disabled]="!book.isLend">Rendre</button>
                 </ion-col>
         </ion-row>
     </ion-grid>
