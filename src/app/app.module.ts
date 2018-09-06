@@ -13,6 +13,8 @@ import { CdListPage } from '../pages/cd/cdList';
 import { BookListPage } from '../pages/book/bookList';
 import { LendBookPage } from '../pages/book/lend-book/lend-book';
 import { LendCdPage } from '../pages/cd/lend-cd/lend-cd';
+import { cdFormPage } from '../pages/cd-form/cd-form';
+import { BookFormPage } from '../pages/book-form/book-form';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { LendCdPage } from '../pages/cd/lend-cd/lend-cd';
     TabsPage,
     CdListPage,
     SettingsPage,
+    BookFormPage,
+    cdFormPage,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +38,8 @@ import { LendCdPage } from '../pages/cd/lend-cd/lend-cd';
     MyApp,
     BookListPage,
     LendBookPage,
+    cdFormPage,
+    BookFormPage,
     LendCdPage,
     TabsPage,
     CdListPage,

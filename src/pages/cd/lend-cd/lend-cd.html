@@ -29,4 +29,22 @@
         </ion-col>
     </ion-row>
   </ion-grid>
+  <form #f="ngForm" (ngSubmit)="onSubmitForm(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label>Date de pret</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" 
+                      name="sendTime" 
+                      [(ngModel)]="cd.sendDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+          <ion-label>Date de recupération</ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY HH:mm" 
+                        name="getTime" 
+                        [(ngModel)]="cd.getDate"></ion-datetime>
+        </ion-item>
+    </ion-list>
+    <button type="button" ion-button full color="danger" (click)="onResetDates()">Supprimer Temps</button>    
+    <button type="submit" ion-button full color="priamry">Enregistrer Temps</button>
+  </form>
 </ion-content>

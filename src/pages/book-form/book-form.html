@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Nouveau Livre
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <form [formGroup]="bookForm">
+        <ion-list>
+            <ion-item-divider>Informations</ion-item-divider>
+            <ion-item>
+                <ion-label>Nom</ion-label>
+                <ion-input placeholder="Livre" formControlName="name"></ion-input>
+            </ion-item>
+        </ion-list>
+        <button ion-button full (click)="onSubmitBook()" color="secondary">Enregister</button>
+    </form>
+</ion-content>

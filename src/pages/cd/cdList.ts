@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-import { ModalController } from 'ionic-angular';
-import { MenuController } from 'ionic-angular';
+import { MenuController,NavController,ModalController } from 'ionic-angular';
 import { CDModel } from './cdModel';
 import { LibraryService } from '../../service/library.service';
 import { LendCdPage } from './lend-cd/lend-cd';
+import { cdFormPage } from '../cd-form/cd-form';
 
 
 @Component({
@@ -12,7 +12,8 @@ import { LendCdPage } from './lend-cd/lend-cd';
   })
   export class CdListPage {
     public cdList: CDModel[];
-    constructor(private modalCtrl : ModalController, private libraryService : LibraryService, private menuContrl : MenuController) {
+    private addNewCD = cdFormPage;
+    constructor(private modalCtrl : ModalController, private navCtrl: NavController, private libraryService : LibraryService, private menuContrl : MenuController) {
     }
 
     ionViewWillEnter(){
@@ -26,6 +27,10 @@ import { LendCdPage } from './lend-cd/lend-cd';
 
     onToggleMenu(){
       this.menuContrl.open();
+    }
+
+    onAddNewCD(){
+      this.navCtrl.push(this.addNewCD)
     }
   }
   

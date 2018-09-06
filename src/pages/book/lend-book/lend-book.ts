@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavParams,ViewController } from 'ionic-angular';
 import { BookModel } from '../bookModel';
 import { LibraryService } from '../../../service/library.service';
+import { NgForm } from '@angular/forms/';
 
 @Component({
   selector: 'page-lend-book',
@@ -25,4 +26,12 @@ export class LendBookPage {
     this.book.isLend = ! this.book.isLend;
   }
 
+  onSubmitForm(form: NgForm){
+    this.dismissModal();
+  }
+
+  onResetDates() {
+    this.book.sendDate = '';
+    this.book.getDate ='';
+  }
 }

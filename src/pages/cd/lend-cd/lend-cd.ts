@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  NavParams,ViewController } from 'ionic-angular';
 import { CDModel } from '../cdModel';
 import { LibraryService } from '../../../service/library.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'page-lend-cd',
@@ -25,4 +26,14 @@ export class LendCdPage implements OnInit {
   onLendGetCd(){
     this.cd.isLend = ! this.cd.isLend;
   }
+
+  onSubmitForm(form: NgForm){
+    this.dismissModal();
+  }
+
+  onResetDates() {
+    this.cd.sendDate = '';
+    this.cd.getDate ='';
+  }
+
 }

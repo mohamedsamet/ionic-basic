@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Nouveau CD
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <form [formGroup]="cdForm">
+        <ion-list>
+            <ion-item-divider>Informations</ion-item-divider>
+            <ion-item>
+                <ion-label>Nom</ion-label>
+                <ion-input placeholder="CD" formControlName="name"></ion-input>
+            </ion-item>
+        </ion-list>
+        <button ion-button full (click)="onSubmitCD()" color="secondary">Enregister</button>
+    </form>
+</ion-content>
