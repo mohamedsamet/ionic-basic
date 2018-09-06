@@ -7,6 +7,8 @@ import { ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
 import { SettingsPage } from '../pages/settings/setting';
+import * as firebase from 'firebase';
+import { AuthPage } from '../pages/auth/auth';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,21 +16,46 @@ import { SettingsPage } from '../pages/settings/setting';
 export class MyApp {
 tabsPage : any = TabsPage;
 settingsPage : any = SettingsPage;
+authPage : any = AuthPage;
+isAuth : boolean;
 @ViewChild('myContent') content : NavController
   constructor(platform: Platform,
      statusBar: StatusBar, 
      splashScreen: SplashScreen,
     private menuCtrl : MenuController) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+     
+      let config = {
+        apiKey: "AIzaSyDTEEaZiVWYmR92wllHZt9XpQej4ODWuqI",
+        authDomain: "ionic-back.firebaseapp.com",
+        databaseURL: "https://ionic-back.firebaseio.com",
+        projectId: "ionic-back",
+        storageBucket: "ionic-back.appspot.com",
+        messagingSenderId: "635148466159"
+      };
+      firebase.initializeApp(config);
+      firebase.auth().onAuthStateChanged((user )=> {
+        if (user) {
+          this.isAuth = true;
+          this.content.setRoot(TabsPage);
+        }else {
+          this.isAuth = false;
+          this.content.setRoot(AuthPage, {mode : 'connect'})
+        }
+      })
       statusBar.styleDefault();
       splashScreen.hide();
     });
   }
-  OnNavigate(page:any){
-      this.content.setRoot(page);
+
+  OnNavigate(page:any, data ? : {}){
+      this.content.setRoot(page, data? data: null);
       this.menuCtrl.close();
+  }
+
+  onDisconnect(){
+    firebase.auth().signOut();
+    this.menuCtrl.close();
   }
 
 }

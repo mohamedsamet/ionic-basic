@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
-import { CDModel } from '../cd/cdModel';
 import { LibraryService } from '../../service/library.service';
 import { NavController } from 'ionic-angular';
 

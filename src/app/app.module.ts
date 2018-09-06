@@ -15,7 +15,8 @@ import { LendBookPage } from '../pages/book/lend-book/lend-book';
 import { LendCdPage } from '../pages/cd/lend-cd/lend-cd';
 import { cdFormPage } from '../pages/cd-form/cd-form';
 import { BookFormPage } from '../pages/book-form/book-form';
-
+import { AuthService } from '../service/auth.service';
+import { AuthPage } from '../pages/auth/auth';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { BookFormPage } from '../pages/book-form/book-form';
     SettingsPage,
     BookFormPage,
     cdFormPage,
+    AuthPage,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import { BookFormPage } from '../pages/book-form/book-form';
     BookFormPage,
     LendCdPage,
     TabsPage,
+    AuthPage,
     CdListPage,
     SettingsPage,
   ],
@@ -49,6 +52,7 @@ import { BookFormPage } from '../pages/book-form/book-form';
     StatusBar,
     LibraryService,
     SplashScreen,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
