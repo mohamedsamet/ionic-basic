@@ -1,0 +1,19 @@
+version: "2"
+services:
+  web:
+    container_name: node-ionic-dev-prog-dev
+    image: ionic_dev_prog:latest
+    #build: .
+    restart: always
+    #command: npm run init-pre-commit
+    ports:
+      - 8100:8100
+      - 8200:8200
+      - 8101:35729
+      - 8102:53703
+    volumes:
+      - .:/home/ionic-new-prog
+      - /home/ionic-new-prog/node_modules
+    environment:
+      - DEV_USERNAME=${DEVELOPPER}
+    tty: true

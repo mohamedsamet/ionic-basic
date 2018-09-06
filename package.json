@@ -5,10 +5,13 @@
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
-    "start": "ionic-app-scripts serve",
+    "start": "CHOKIDAR_USEPOLLING=1 ionic serve -all",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
-    "lint": "ionic-app-scripts lint"
+    "lint": "ionic-app-scripts lint",
+    "docker-down": "docker-compose --project-name ionic_dev_prog -f environnement_dev.yml down -v --remove-orphans",
+    "docker-up": "docker-compose --project-name ionic_dev_prog -f environnement_dev.yml up --build -d",
+    "docker-dev": "SET DEVELOPPER=%USERNAME%&& npm run docker-down && npm run docker-up"
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
