@@ -6,21 +6,15 @@
         </button>
         </ion-buttons>
         <ion-title>
-            Appareils
+            Liste des livres
         </ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
-    <p>Ici La liste des appreils</p>
+    <p>Ici La liste des livres</p>
     <ion-list>
-        <button ion-item icon-start (click)="onLoadAppareil(i)" *ngFor="let appar of appreilList ; let i = index">
-          <ion-icon name="power" [color]="appar.isOn? 'secondary':'danger'">
-
-          </ion-icon>
-            {{appar.name}}
+        <button ion-item (click)="onLoadBook(i)" *ngFor="let book of bookList ; let i = index">        
+            {{book.name}}
         </button>
     </ion-list>  
 </ion-content>
-<ion-footer padding>
-    <p>Bas de page</p>
-</ion-footer>

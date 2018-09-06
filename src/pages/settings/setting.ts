@@ -10,22 +10,7 @@ import { MenuController } from 'ionic-angular';
   })
   export class SettingsPage {
   
-    constructor(private alertCtrl : AlertController, private menuContrl: MenuController) {
-    }
-
-    onToggleLight(){
-      let alert = this.alertCtrl.create({
-        title:"Etes vous sure de vouloir continuer",
-        subTitle:"Cette action allumera ou éteindera toutes les lumières de la maison!",
-        buttons: [{
-          text: "annuler",
-          role:'cancel'
-        }, {
-          text:'confirmer',
-          handler: () => console.log('confirmer !')
-        }]
-      })
-      alert.present();
+    constructor(private menuContrl: MenuController) {
     }
 
     onToggleMenu(){

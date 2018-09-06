@@ -3,31 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AppreilsPage } from '../pages/appareills/appareils';
-import { SingleAppareilPage } from '../pages/appareills/single-appareil/single-appareil';
 import { SettingsPage } from '../pages/settings/setting';
-import { AppareilService } from '../service/appareils.service';
-import { OptionsPage } from '../pages/option/option';
+import { LibraryService } from '../service/library.service';
+import { CdListPage } from '../pages/cd/cdList';
+import { BookListPage } from '../pages/book/bookList';
+import { LendBookPage } from '../pages/book/lend-book/lend-book';
+import { LendCdPage } from '../pages/cd/lend-cd/lend-cd';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
+    BookListPage,
+    LendBookPage,
+    LendCdPage,
     TabsPage,
-    AppreilsPage,
-    SingleAppareilPage,
+    CdListPage,
     SettingsPage,
-    OptionsPage
   ],
   imports: [
     BrowserModule,
@@ -36,18 +32,16 @@ import { OptionsPage } from '../pages/option/option';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
+    BookListPage,
+    LendBookPage,
+    LendCdPage,
     TabsPage,
-    AppreilsPage,
-    SingleAppareilPage  ,
-    SettingsPage  ,
-    OptionsPage
+    CdListPage,
+    SettingsPage,
   ],
   providers: [
     StatusBar,
-    AppareilService,
+    LibraryService,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

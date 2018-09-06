@@ -3,17 +3,17 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
-import { OptionsPage } from '../pages/option/option';
 import { ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
+import { SettingsPage } from '../pages/settings/setting';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
 tabsPage : any = TabsPage;
-optionsPage : any = OptionsPage;
+settingsPage : any = SettingsPage;
 @ViewChild('myContent') content : NavController
   constructor(platform: Platform,
      statusBar: StatusBar, 
