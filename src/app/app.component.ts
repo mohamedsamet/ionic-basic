@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { MenuController } from 'ionic-angular/components/app/menu-controller';
+import { NavController,MenuController,Platform } from 'ionic-angular';
 import { SettingsPage } from '../pages/settings/setting';
 import * as firebase from 'firebase';
 import { AuthPage } from '../pages/auth/auth';
+import { LibraryService } from '../service/library.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,11 +19,11 @@ authPage : any = AuthPage;
 isAuth : boolean;
 @ViewChild('myContent') content : NavController
   constructor(platform: Platform,
-     statusBar: StatusBar, 
-     splashScreen: SplashScreen,
+    statusBar: StatusBar, 
+    splashScreen: SplashScreen,
+    private libraryService : LibraryService,
     private menuCtrl : MenuController) {
     platform.ready().then(() => {
-     
       let config = {
         apiKey: "AIzaSyDTEEaZiVWYmR92wllHZt9XpQej4ODWuqI",
         authDomain: "ionic-back.firebaseapp.com",
@@ -37,7 +36,7 @@ isAuth : boolean;
       firebase.auth().onAuthStateChanged((user )=> {
         if (user) {
           this.isAuth = true;
-          this.content.setRoot(TabsPage);
+          this.libraryService.retrieveDataCd();          
         }else {
           this.isAuth = false;
           this.content.setRoot(AuthPage, {mode : 'connect'})
@@ -49,7 +48,14 @@ isAuth : boolean;
   }
 
   OnNavigate(page:any, data ? : {}){
-      this.content.setRoot(page, data? data: null);
+    if (page == this.tabsPage){
+      this.libraryService.retrieveDataCd()
+      this.content.getActive().component.name != 'TabsPage' 
+      ?(this.content.setRoot(page, data? data: null))
+      :null
+    }else {
+      this.content.setRoot(page, data? data: null)
+    }
       this.menuCtrl.close();
   }
 

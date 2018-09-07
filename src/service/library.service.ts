@@ -1,51 +1,76 @@
 import { CDModel } from "../pages/cd/cdModel";
 import { BookModel } from "../pages/book/bookModel";
+import { Subject } from "rxjs/Subject";
+import * as firebase from 'firebase';
+import DataSnapshot = firebase.database.DataSnapshot;
 
 export class LibraryService {
-    public cdList: CDModel[] = [{
-        id:1, isLend: false, name:'XBMC Ubuntu', sendDate:'',getDate:''
-    },{
-        id:2, isLend: false, name:'SolusOS',sendDate:'',getDate:''
-    },{
-        id:3, isLend: false, name:'Puppy Arcade',sendDate:'',getDate:''
-    },{
-        id:4, isLend: false, name:'Amatix InstantPBX',sendDate:'',getDate:''
-    },{
-        id:5, isLend: false, name:'Xebian',sendDate:'',getDate:''
-    },{
-        id:6, isLend: false, name:'Fire rescue CD',sendDate:'',getDate:''
-    },{
-        id:7, isLend: false, name:'Free BSD Livre',sendDate:'',getDate:''
-    },{
-        id:8, isLend: false, name:'AVG Rescue CD',sendDate:'',getDate:''
-    },{
-        id:9, isLend: false, name:'Wifi SLAX',sendDate:'',getDate:''
-    }];
-    public bookList: BookModel[] = [{
-        id:1, isLend: false, name:'Five more to go',sendDate:'',getDate:''
-    },{
-        id:2, isLend: false, name:'Cold hearted river',sendDate:'',getDate:''
-    },{
-        id:3, isLend: false, name:'Bring me back',sendDate:'',getDate:''
-    },{
-        id:4, isLend: false, name:'Amatix InstantPBX',sendDate:'',getDate:''
-    },{
-        id:5, isLend: false, name:'Walter Mosley',sendDate:'',getDate:''
-    },{
-        id:6, isLend: false, name:'Hell Bent',sendDate:'',getDate:''
-    },{
-        id:7, isLend: false, name:'Sun Burn',sendDate:'',getDate:''
-    },{
-        id:8, isLend: false, name:'Y is for yesterday',sendDate:'',getDate:''
-    },{
-        id:9, isLend: false, name:'The last place you look',sendDate:'',getDate:''
-    }];
+ 
+    cdList$ = new Subject<CDModel[]>();
+    bookList$ = new Subject<BookModel[]>();
+    
+    public cdList: CDModel[] = [];
+    public bookList: BookModel[] = [];
+
+    emitCds() {
+        this.cdList$.next(this.cdList.slice());
+    }
+
+    emitBooks() {
+       this.bookList$.next(this.bookList.slice());
+    }
 
     addCD(cdName){
         this.cdList.push({id:this.cdList.length+1,isLend:false,name:cdName,sendDate:'',getDate:''});
+        this.emitCds();
     }
 
     addBook(bookName){
         this.bookList.push({id:this.bookList.length+1,isLend:false,name:bookName,sendDate:'',getDate:''});
+        this.emitBooks();
     }
+
+    saveDataCd(){
+        return new Promise( (resolve,rej) => {
+            firebase.database().ref('cd').set(this.cdList).then(
+                (data: DataSnapshot)=> resolve(data) ).catch((error) => {
+                    rej(error);
+                })
+        })
+    }
+
+    saveDataBook(){
+        return new Promise( (resolve,rej) => {
+            firebase.database().ref('book').set(this.bookList).then(
+                (data: DataSnapshot)=> resolve(data) ).catch((error) => {
+                    rej(error);
+                })
+        })
+    }
+
+    retrieveDataCd(){
+        return new Promise((resolve, reject) => {
+            firebase.database().ref('cd').once('value').then((data:DataSnapshot)=> {
+                this.cdList = data.val();
+                this.emitCds();
+                resolve("Donnée récupéré avec succès");
+            }).catch(error => {
+                reject(error);
+            })
+        })
+    }
+
+    retrieveDataBook(){
+        return new Promise((resolve, reject) => {
+            firebase.database().ref('book').once('value').then((data:DataSnapshot)=> {
+                this.bookList = data.val();
+                this.emitBooks();
+                resolve("Donnée récupéré avec succès");
+            }).catch(error => {
+                reject(error);
+            })
+        })
+    }
+
+
 }
