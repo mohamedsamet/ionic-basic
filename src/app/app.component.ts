@@ -8,6 +8,7 @@ import { SettingsPage } from '../pages/settings/setting';
 import * as firebase from 'firebase';
 import { AuthPage } from '../pages/auth/auth';
 import { LibraryService } from '../service/library.service';
+import { CameraPage } from '../pages/camera/camera';
 
 @Component({
   templateUrl: 'app.html'
@@ -17,6 +18,7 @@ tabsPage : any = TabsPage;
 settingsPage : any = SettingsPage;
 authPage : any = AuthPage;
 isAuth : boolean;
+cameraPage: any = CameraPage;
 @ViewChild('myContent') content : NavController
   constructor(platform: Platform,
     statusBar: StatusBar, 

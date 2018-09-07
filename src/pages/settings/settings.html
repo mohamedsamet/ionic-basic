@@ -9,7 +9,16 @@
       </ion-navbar>
 </ion-header>
 <ion-content padding>
-    <p>Ici La page de réglage non encore développée</p>
+    <p>Coordonnée</p>
+      <agm-map [latitude]="latitude"
+               [longitude]="longitude"
+               (mapClick)="onMapClicked($event)">
+            <agm-marker *ngIf="marker"
+                        [latitude]="latitude"
+                        [longitude]="longitude"
+                        [markerDraggable]="marker.draggable"
+            ></agm-marker>
+      </agm-map>
 </ion-content>
 
       

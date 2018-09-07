@@ -17,6 +17,11 @@ import { cdFormPage } from '../pages/cd-form/cd-form';
 import { BookFormPage } from '../pages/book-form/book-form';
 import { AuthService } from '../service/auth.service';
 import { AuthPage } from '../pages/auth/auth';
+import { AgmCoreModule} from '@agm/core';
+import {Geolocation} from '@ionic-native/geolocation';
+import {Camera} from '@ionic-native/camera'
+import { CameraPage } from '../pages/camera/camera';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +31,7 @@ import { AuthPage } from '../pages/auth/auth';
     LendCdPage,
     TabsPage,
     CdListPage,
+    CameraPage,    
     SettingsPage,
     BookFormPage,
     cdFormPage,
@@ -33,7 +39,8 @@ import { AuthPage } from '../pages/auth/auth';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({apiKey : 'AIzaSyDTEEaZiVWYmR92wllHZt9XpQej4ODWuqI'})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,6 +50,7 @@ import { AuthPage } from '../pages/auth/auth';
     cdFormPage,
     BookFormPage,
     LendCdPage,
+    CameraPage,
     TabsPage,
     AuthPage,
     CdListPage,
@@ -53,6 +61,8 @@ import { AuthPage } from '../pages/auth/auth';
     LibraryService,
     SplashScreen,
     AuthService,
+    Geolocation,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

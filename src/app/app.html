@@ -14,6 +14,10 @@
                 <ion-icon name="settings" item-start></ion-icon>
                 Réglage
             </button>
+            <button ion-item  (click)="OnNavigate(cameraPage)" *ngIf="isAuth">
+                <ion-icon name="camera" item-start></ion-icon>
+                Caméra
+            </button>
             <button ion-item  (click)="OnNavigate(authPage, {mode:'new'})" *ngIf="!isAuth">
                 <ion-icon name="person-add" item-start></ion-icon>
                 Nouvel Utilisateur
