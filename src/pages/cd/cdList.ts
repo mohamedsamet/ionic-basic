@@ -28,10 +28,10 @@ import { Subscription } from 'rxjs';
     }
 
     fetchCd(){
-      this.loader  = this.loadingCtrl.create({
-        content : 'Récupération en cours ...'
-      });
-      this.loader.present();    
+      // this.loader  = this.loadingCtrl.create({
+      //   content : 'Récupération en cours ...'
+      // });
+      // this.loader.present();    
       this.cdSubscription = this.libraryService.cdList$.subscribe(res => {
         this.cdList = res;
         this.loader.dismiss();

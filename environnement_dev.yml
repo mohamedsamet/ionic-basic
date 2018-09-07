@@ -11,6 +11,7 @@ services:
       - 8200:8200
       - 8101:35729
       - 8102:53703
+      - 8990:8000
     volumes:
       - .:/home/ionic-new-prog
       - /home/ionic-new-prog/node_modules
